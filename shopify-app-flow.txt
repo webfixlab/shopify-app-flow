@@ -58,3 +58,5 @@ laravel new app-name
 11. Download ngrok.com and setup 2 URLs for shopify app
 	- ngrok config add-authtoken 2Xwasdfsfsdfsdfdsfdsfsdfsdfdsfdsf
 	- ngrok http --domain=quetzal-unbiased-cheetah.ngrok-free.app 8000
+
+12. 
