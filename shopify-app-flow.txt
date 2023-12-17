@@ -1,0 +1,60 @@
+1. composer create-project laravel/laravel app-name
+
+OR
+
+composer global require laravel/installer
+
+laravel new app-name
+
+2. php artisan make:controller BarController
+
+3. php artisan serve
+
+4. Route::get('/announce/{currency?}',[\App\Http\Controllers\BarController::class, 'BarDetails'])->name('bar');
+	- public function BarDetails($currency = '') {
+        return view('barpage', compact('currency'));
+    }
+	- <a href="{{ route('bar') }}">Go to settings</a>
+	- <h1>Hello {{ $currency }}</h1>
+
+5. composer require kyon147/laravel-shopify
+	- php artisan vendor:publish --tag=shopify-config
+	- 
+
+6. php artisan migrate
+	- php artisan migrate:rollback
+
+7. create the shopif app and add below keys to .env file
+	- SHOPIFY_API_KEY=fsfdsfsdfdsfsfsdfdsfdsfsdfsddfdsf
+	- SHOPIFY_API_SECRET=dsdfdsfsdfsfsdfsdfsfsdfsdf
+
+8. to app/Models/User.php, add below code,
+	- use Osiset\ShopifyApp\Contracts\ShopModel as IShopModel;
+	- use Osiset\ShopifyApp\Traits\ShopModel;
+	- class User extends Authenticatable implements IShopModel
+	- use ShopModel;
+	- //'password' => 'hashed',
+
+9. Route::get('/', function () {
+    return view('welcome');
+})->middleware(['verify.shopify'])->name('home');
+
+10. add below code to the welcome.blade.php
+@extends('shopify-app::layouts.default')
+
+@section('content')
+    <!-- You are: (shop domain name) -->
+    <p>You are: {{ $shopDomain ?? Auth::user()->name }}</p>
+@endsection
+
+@section('scripts')
+    @parent
+
+    <script>
+        actions.TitleBar.create(app, { title: 'Welcome' });
+    </script>
+@endsection
+
+11. Download ngrok.com and setup 2 URLs for shopify app
+	- ngrok config add-authtoken 2Xwasdfsfsdfsdfdsfdsfsdfsdfdsfdsf
+	- ngrok http --domain=quetzal-unbiased-cheetah.ngrok-free.app 8000
