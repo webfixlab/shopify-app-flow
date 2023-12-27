@@ -59,4 +59,55 @@ laravel new app-name
 	- ngrok config add-authtoken 2Xwasdfsfsdfsdfdsfdsfsdfsdfdsfdsf
 	- ngrok http --domain=quetzal-unbiased-cheetah.ngrok-free.app 8000
 
-12. 
+12. public function index(){
+        $shop = Auth::user();
+        $data = $shop->api()->rest('GET', '/admin/products.json');
+        $products = $data['body']->products;
+        return view('welcome', compact('products'));
+    }
+
+	- @foreach ($products as $product)
+	<tr>
+	<td>{{ $product->title }}</td>
+	<td>{{ $product->variants[0]->price }}</td>
+	<td>{{ $product->created_at }}</td>
+	</tr>
+	@endforeach
+
+13. php artisan make:migration create_groups_table
+	- public function up(): void
+    {
+        Schema::create('groups', function (Blueprint $table) {
+            $table->id();
+            $table->string('name', 100)->index();
+            $table->text('description')->nullable;
+            $table->boolean('status')->default(true);
+            $table->timestamps();
+        });
+    }
+	- php artisan migrate
+	- php artisan migrate:rollback
+
+14. php artisan make:model Group
+
+15. {{ URL::tokenRoute('home')}}
+
+16. VerifyCsrfToken.php
+	- protected $except = [
+        '*',
+    ];
+
+17. @sessionToken to the html form before submit button
+
+18. return redirect( URL::tokenRoute('group.index') );
+
+19. use Illuminate\Support\Facades\URL;
+	use App\Models\Group;
+
+20. Theme App Extension
+	- create a folder in any place
+	- copy the package.json
+	- npm install
+	- npm scaffold
+	- npm run dev
+	- 
