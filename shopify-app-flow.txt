@@ -108,6 +108,11 @@ laravel new app-name
 	- create a folder in any place
 	- copy the package.json
 	- npm install
-	- npm scaffold
+	- npm run scaffold
 	- npm run dev
-	- 
+
+21. Theme liquid customization
+	- shopify theme init
+	- shopify theme dev --store webfixlab.myshopify.com
+	- shopify theme push --unpublished
+	- shopify theme publish
