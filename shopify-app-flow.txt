@@ -116,3 +116,14 @@ laravel new app-name
 	- shopify theme dev --store webfixlab.myshopify.com
 	- shopify theme push --unpublished
 	- shopify theme publish
+
+
+
+export PATH="/opt/homebrew/bin:/usr/local/bin:/Users/shahriarkabir/Library/Application Support/Herd/bin/:/opt/local/bin:$PATH"
+
+# Herd injected PHP 8.2 configuration.
+export HERD_PHP_82_INI_SCAN_DIR="/Users/shahriarkabir/Library/Application Support/Herd/config/php/82/"
+
+
+# Herd injected PHP binary.
+export PATH="/Users/shahriarkabir/Library/Application Support/Herd/bin/":$PATH
